@@ -31,20 +31,67 @@ const productPrices = [2.89, 3.29, 5.79]
 const productSold = ['eggs', 'eggs', 'cheese', 'milk']
 const soldPrice = [2.89, 2.99, 5.97, 3.29]
 
+// 1. Map
 function  priceCheck(){
-    let error = 0
-    for(let i = 0;i< productSold.length;i++){
-        const productIndex =products.indexOf(productSold[i])
-        const correctPrice = productPrices[productIndex]
-         if(soldPrice[i]!==correctPrice){
-           error++
-         }
+  const priceMap = new Map()
+    for(let i = 0;i<products.length;i++){
+     priceMap.set(products[i],productPrices[i])
+  }
+
+    let errors = 0
+  for(let i = 0;i<productSold.length;i++){
+    if( priceMap.get(productSold[i])!==soldPrice[i] ){
+       errors++
     }
-    return error
+  }
+ return  errors
 }
 
+// 2. map
+// function  priceCheck(){
+//   const priceMap = {}
+//   for(let i = 0;i<products.length;i++){
+//      priceMap[products[i]]=productPrices[i]
+//   }
+//   let errors = 0
+//   for(let i = 0;i<productSold.length;i++){
+//     if( priceMap[productSold[i]]!==soldPrice[i] ){
+//        errors++
+//     }
+//   }
+//  return  errors
+// }
 
-console.log( priceCheck())
+// 3. for 迴圈
+// function  priceCheck(){
+//     let error = 0
+//     for(let i = 0;i< productSold.length;i++){
+//         const productIndex =products.indexOf(productSold[i])
+//         const correctPrice = productPrices[productIndex]
+//          if(soldPrice[i]!==correctPrice){
+//            error++
+//          }
+//     }
+//     return error
+// }
+
+
+// function priceCheck() {
+//   const priceMap = {}; // 建立一個查表
+//   for (let i = 0; i < products.length; i++) {
+//     priceMap[products[i]] = productPrices[i];
+//   }
+// console.log("priceMap",priceMap)
+//   let error = 0;
+//   for (let i = 0; i < productSold.length; i++) {
+//     if (soldPrice[i] !== priceMap[productSold[i]]) {
+//       error++;
+//     }
+//   }
+//   return error;
+// }
+
+// console.log( priceCheck())
 
 /*
 解題思路：
@@ -55,3 +102,4 @@ console.log( priceCheck())
 4. 比對真實價格和 soldPrice 是否相同
 5. 不同就 error++，最後回傳 error
 */
+

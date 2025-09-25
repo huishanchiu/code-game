@@ -21,17 +21,69 @@ function add3(n) {
 function multiple2(n) {
   return n * 2;
 }
+// 1.
+// function func(...fns) {
+//   let fnsNum = fns.length;
 
-function func(...fns) {
+//   return (x) => {
+//     let res = x;
+//     for (let i = fnsNum - 1; i >= 0; i--) {
+//       res = fns[i](res); // 這邊記得用上一個答案的 res 帶入
+//     }
+//     return res;
+//   };
+// }
+
+
+// 2.
+// function func(...fns) {
+//   return (x)=>
+//  fns.reduceRight((acc,fn)=>fn(acc),x)
+// }
+
+
+// 3.
+//  function func(...fns){
+//  return (x)=>fns.reduceRight(resWithFn,x)
+//  }
+
+
+// function resWithFn(acc,fun){
+// return fun(acc)
+// }
+
+
+// 4. 非同步
+function asyncfunc(...fns) {
   let fnsNum = fns.length;
 
-  return (x) => {
+  return async (x) => {
     let res = x;
     for (let i = fnsNum - 1; i >= 0; i--) {
-      res = fns[i](res); // 這邊叫得用上一個答案的 res 帶入
+      res =await fns[i](res); // 這邊記得用上一個答案的 res 帶入
     }
     return res;
   };
 }
 
-console.log(func(add3, multiple2)(2));
+
+// console.log(func(add3, multiple2)(2))
+
+// 普通函數
+function add(a, b) {
+  return a + b;
+}
+
+add(2, 3); // 5
+
+// 柯里化版本
+function curriedAdd(a) {
+  
+  return function(b) {
+  console.log(a,b);
+
+    return a + b;
+  };
+}
+
+curriedAdd(2)(3); // 5
