@@ -1,0 +1,1 @@
+(()=>{var o={672(o){o.exports={cal:function(o){return(100*o+20-4)%10+3},name:"hello"}}},r={},e=function e(n){var t=r[n];if(void 0!==t)return t.exports;var l=r[n]={exports:{}};return o[n](l,l.exports,e),l.exports}(672);console.log(e.cal(30)),console.log(e.name)})();
